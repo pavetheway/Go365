@@ -20,13 +20,7 @@ Go365 is a tool designed to perform user enumeration* and password guessing atta
 
 #### Option 0
 
-```
-go get -u github.com/optiv/Go365
-```
-
-#### Option 1
-
-Download a pre-compiled binary for your OS [HERE](https://github.com/optiv/Go365/releases).
+Download a pre-compiled binary for your OS [HERE](UPDATE).
 
 #### Option 2
 
@@ -53,25 +47,26 @@ go build Go365.go
 ## Usage
 
 ```
-$ ./Go365 -h
+$ ./Go365
 
-  ██████         ██████   ██████  ██████
- ██                   ██ ██       ██
- ██  ███   ████   █████  ███████  ██████
- ██    ██ ██  ██      ██ ██    ██      ██
-  ██████   ████  ██████   ██████  ██████
+  ██████         ██████   ██████  ██████
+ ██                   ██ ██       ██
+ ██  ███   ████   █████  ███████  ██████
+ ██    ██ ██  ██      ██ ██    ██      ██
+  ██████   ████  ██████   ██████  ██████
 
- Version: 1.4
- Authors: h0useh3ad, paveway3, S4R1N, EatonChips
+ Version: 2.0
+ Authors: paveway3, h0useh3ad, S4R1N, EatonChips
 
 Usage:
 
   -h                            Shows this stuff
 
+
   Required - Endpoint:
 
     -endpoint [rst or graph]    Specify which endpoint to use
-                                : (-endpoint rst)   login.microsoftonline.com/rst2.srf. SOAP XML request with XML response
+                                : (-endpoint rst)   *Classic Go365!* login.microsoftonline.com/rst2.srf. SOAP XML request with XML response
                                 : (-endpoint graph)  login.microsoft.com/common/oauth2/token. HTTP POST request with JSON Response
 
   Required - Usernames and Passwords:
@@ -79,7 +74,7 @@ Usage:
     -u <string>                 Single username to test
                                 : Username with or without "@domain.com"
                                 : Must also provide -d flag to specify the domain
-                                : (-u legit.user)
+                                : (-u legitfirst.lastname@totesrealdomain.com)
 
     -ul <file>                  Username list to use (overrides -u)
                                 : File should contain one username per line
@@ -121,21 +116,21 @@ Usage:
                                 : Will append if file exists, otherwise a file is created
                                 : (-o ./Go365output.out)
 
-    -proxy <string>             Single proxy server to use
+    -proxy <string>             Single SOCKS5 proxy server to use
                                 : IP address and Port separated by a ":"
-                                : Has only been tested using SSH SOCKS5 proxies
+                                : SOCKS5 proxy
                                 : (-proxy 127.0.0.1:1080)
 
-    -proxyfile <string>         A file with a list of proxy servers to use
+    -proxyfile <string>         A file with a list of SOCKS5 proxy servers to use
                                 : IP address and Port separated by a ":" on each line
                                 : Randomly selects a proxy server to use before each request
-                                : Has only been tested using SSH SOCKS5 proxies
                                 : (-proxyfile ./proxyfile.txt)
 
     -url <string>               Endpoint to send requests to
                                 : Amazon API Gateway 'Invoke URL'
-                                : Highly recommended that you use this option.
-                                : (-url https://kg98agrae3.execute-api.us-east-2.amazonaws.com/login)
+                                : Highly recommended that you use this option. Google it, or
+                                : check this out: https://bigb0sss.github.io/posts/redteam-rotate-ip-aws-gateway/
+                                : (-url https://notrealgetyourown.execute-api.us-east-2.amazonaws.com/login)
 
     -debug                      Debug mode.
                                 : Print xml response
@@ -144,12 +139,17 @@ Usage:
 ### Examples
 
 ```
-./Go365 -endpoint rst -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com
-./Go365 -endpoint graph -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5
-./Go365 -endpoint rst -up ./userpass_list.txt -delay 3600 -d pwnthisfakedomain.com -w 5 -o Go365output.txt
-./Go365 -endpoint graph -u legituser -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5 -o Go365output.txt -proxy 127.0.0.1:1080
-./Go365 -endpoint rst -u legituser -pl ./pass_list.txt -delay 1800 -d pwnthisfakedomain.com -w 5 -o Go365output.txt -proxyfile ./proxyfile.txt
-./Go365 -endpoint graph -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5 -o Go365output.txt -url https://k62g98dne3.execute-api.us-east-2.amazonaws.com/login 
+  ./Go365 -endpoint rst -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com
+  ./Go365 -endpoint graph -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5
+  ./Go365 -endpoint rst -up ./userpass_list.txt -delay 3600 -d pwnthisfakedomain.com -w 5 -o Go365output.txt
+  ./Go365 -endpoint graph -u legituser -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5 -o Go365output.txt -proxy 127.0.0.1:1080
+  ./Go365 -endpoint rst -u legituser -pl ./pass_list.txt -delay 1800 -d pwnthisfakedomain.com -w 5 -o Go365output.txt -proxyfile ./proxyfile.txt
+  ./Go365 -endpoint graph -ul ./user_list.txt -p 'coolpasswordbro!123' -d pwnthisfakedomain.com -w 5 -o Go365output.txt -url https://notrealgetyourown.execute-api.us-east-2.amazonaws.com/login
+
+  You can even schedule out your entire password guessing campaign using the -pl and -delay flags :)
+  ./Go365 -endpoint rst -ul ./user_list.txt -d pwnthisfakedomain.com -w 5 -o Go365output.txt -url https://notrealgetyourown.execute-api.us-east-2.amazonaws.com/login -proxyfile listofprox.txt -pl listofpasswords.txt -delay 7200
+
+  *Protip: If you get a lot of "Account locked out" responses, then you might wanna proxy or use an AWS Gateway.
 ```
 
 ## Account Locked Out! (Domain Defenses)

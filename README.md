@@ -22,27 +22,19 @@ Go365 is a tool designed to perform user enumeration* and password guessing atta
 
 Download a pre-compiled binary for your OS [HERE](https://github.com/pavetheway/Go365/releases/tag/Go365_v2.0).
 
-#### Option 2
+#### Option 1
 
 Download the source and compile locally.
 
 1. Install Go.
-2. Go get some packages:
-
-```
-go get github.com/beevik/etree
-go get github.com/fatih/color
-go get golang.org/x/net/proxy
-```
-
-3. Clone the repo.
-4. Navigate to the repo and compile ya dingus.
+2. Clone the repo.
+3. Navigate to the repo and compile ya dingus.
 
 ```
 go build Go365.go
 ```
 
-5. Run the resulting binary and enjoy :)
+4. Run the resulting binary
 
 ## Usage
 

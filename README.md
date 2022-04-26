@@ -1,8 +1,8 @@
-# Go365 v1.4
+# Go365 v2.0
 
-Dec 6 2021 - Noticed that the AWS gateway option wasn't working properly in this last release. On my list to fix it! Busy season, so give me a couple weeks please :P  -- paveway3
-
-
+- Fixed AWS gateway issues (thanks h0useh3ad!)
+- No longer dies when proxy server connections fail
+- Added the graph endpoint
 
 **Please read all of this README before using Go365!**
 

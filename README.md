@@ -209,4 +209,4 @@ The tool will randomly iterate through the provided proxy servers and wait for t
 
 Additionally, an endpoint url may be specified so this tool can interface with Amazon API Gateway. Setup a gateway to point to the `https://login.microsoftonline.com/rst2.srf` endpoint, then set the -url parameter to the provided `Invoke URL`. Your IP should be rotated with each request.
 
-`-url https://k62g98dne3.execute-api.us-east-2.amazonaws.com/login`
+`-url https://justanexample.execute-api.us-east-2.amazonaws.com/login`
